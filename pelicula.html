@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles/index.css">
+    <link rel="stylesheet" href="src/styles/pelicula.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <title>Fotograma</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img class="imagen-logo" src="src/images/logo.svg" alt="">
+            <h1>FOTOGRAMA</h1>
+        </div>
+        <nav>
+            <a href="">Peliculas</a>
+            <a href="">Series</a>
+            <a href="">Populares</a>
+            <a href="">Recientes</a>
+        </nav>
+    </header> 
+    <section id="movie-display">
+        <img id="movie-banner"/>
+        <div id="movie-info">
+            <div>
+                <img id="movie-poster"/>
+                <h2 id="release-date">Estreno: 23 de Julio de 2023</h2>            
+            </div>
+            <div>
+                <h1 id="movie-title">Lorem ipsum</h1>
+                <p id="movie-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit consectetur culpa illum perspiciatis, nihil optio unde modi saepe quasi hic rem praesentium dolorem, iste cupiditate explicabo qui quis ipsam vero!</p> 
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    let queryString = window.location.search
+    let urlParams = new URLSearchParams(queryString)
+    let movieId = urlParams.get("id")
+
+    let title = document.getElementById("movie-title")
+    let description = document.getElementById("movie-description")
+    let releaseDate = document.getElementById("release-date")
+    let poster = document.getElementById("movie-poster")
+    let banner = document.getElementById("movie-banner")
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
+    const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNzgxMGIwMTk3ZmJhZTJmYzFiNWIyZjQ1MTJjNjRmNSIsInN1YiI6IjY0ZmE3Mzc1NDM0OTRmMDBhZGRmNTY1NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6cr5HuJM2zHbyzR2B96z7muii9-XHwD7g81BB-MbL48'
+    }};
+
+    fetch('https://api.themoviedb.org/3/movie/'+ movieId +'?language=es-mx', options)
+    .then(response => response.json())
+    .then(response => {
+        console.log(response)
+        poster.src = "https://image.tmdb.org/t/p/original" + response.poster_path
+        banner.src = "https://image.tmdb.org/t/p/original" + response.backdrop_path
+        title.innerHTML = response.title
+        description.innerHTML = response.overview
+        let date = new Date(response.release_date)
+        releaseDate.innerHTML = `Fecha de Estreno: ${date.getUTCDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`
+    })
+</script>
+</html>
