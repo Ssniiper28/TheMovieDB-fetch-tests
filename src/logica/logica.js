@@ -6,9 +6,6 @@ let tendenciasSlideShow = document.getElementById("slider-tendencias")
 
 let baseImageUrl = "https://image.tmdb.org/t/p/w500/tmU7GeKVybMWFButWEGl2M4GeiP.jpg"
 
-let curp = "LEVD081231HCSNLRA3"
-
-console.log(curp.toLowerCase())
 
 const options = {
     method: 'GET',
@@ -22,7 +19,6 @@ const options = {
 fetch('https://api.themoviedb.org/3/movie/now_playing?language=es-MX&page=1', options)
     .then(response => response.json())
     .then(response => {
-        console.log(response)
         let movies = response.results
         let figureData = ""
         movies.map(movie => {
@@ -79,7 +75,6 @@ fetch('https://api.themoviedb.org/3/trending/movie/week?language=es-mx', options
 fetch('https://api.themoviedb.org/3/movie/popular?language=es-mx&page=1', options)
 .then(response => response.json())
 .then(response => {
-    console.log(response)
     let movies = response.results
     let figureData = ""
     movies.map(movie => {
@@ -106,7 +101,6 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=es-mx&page=1', option
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=es-mx&page=1', options)
 .then(response => response.json())
 .then(response => {
-    console.log(response)
     let movies = response.results
     let figureData = ""
     movies.map(movie => {
