@@ -10,7 +10,7 @@
     display: block;
     width: 100%;
     height: 61vmin;
-    background-color: grey;
+    background-color: #1D3D59;
     object-fit: cover;
     border-bottom: .4vmax solid #591419;
 }
@@ -23,6 +23,17 @@
     left: 5%;
     width: 90%;
     color: white;
+    padding-bottom: 5vmin;
+}
+
+.clasificacion-container{
+    display: flex;
+    align-items: center;
+    gap: 1vmin;
+    margin-top: 28vmin;
+    width: fit-content;
+    color: #f5c518;
+    text-shadow: 3px 3px 5px black;
 }
 
 #release-date{
@@ -39,7 +50,7 @@
 }
 
 #movie-title{
-    margin-top: 28vmin;
+    display: inline-block;
     font-size: 35px;
     color: white;
     text-shadow: 0px 0px 5px black;
@@ -49,4 +60,25 @@
     margin-top: 2vw;
     text-align: justify;
     color: white;
+}
+
+@media (max-width:800px){
+    #movie-info{
+        top: 40vmin;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #movie-title{
+        margin-top: 2vmin;
+        font-size: 35px;
+        color: white;
+        text-shadow: 0px 0px 5px black;
+    }
+
+    .clasificacion-container{
+        top: 46.5vmin;
+        left: 55.5vmin;
+    }
+    
 }
