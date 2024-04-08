@@ -138,17 +138,6 @@ anterior.onclick = () => {
     peliculasSlideshow.scrollLeft -= (peliculasSlideshow.offsetWidth - peliculasSlideshow.offsetWidth * 0.085) / 3
 }
 
-siguiente = document.getElementById("serie-siguiente")
-anterior = document.getElementById("serie-anterior")
-
-siguiente.onclick = () => {
-    seriesSlideShow.scrollLeft += (peliculasSlideshow.offsetWidth - peliculasSlideshow.offsetWidth * 0.085) / 3
-}
-
-anterior.onclick = () => {
-    seriesSlideShow.scrollLeft -= (peliculasSlideshow.offsetWidth - peliculasSlideshow.offsetWidth * 0.085) / 3
-}
-
 siguiente = document.getElementById("tendencias-siguiente")
 anterior = document.getElementById("tendencias-anterior")
 
